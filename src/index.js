@@ -1,6 +1,7 @@
 const express=require("express");
 const bodyparser=require("body-parser");
 
+
 const {PORT}=require("./config/ServerConfig");
 
 const setupAndStartServer= async()=>{
@@ -9,9 +10,16 @@ const setupAndStartServer= async()=>{
 
     app.use(bodyparser.json());
     app.use(bodyparser.urlencoded({extended:true}));
-    app.listen(PORT,()=>{
+
+    app.listen(PORT, async()=>{
         console.log(`server started at ${PORT}`);
-        console.log(process.env)    })
+        
+        
+    })
 }
 
 setupAndStartServer();
+
+// // Create a new user
+// const jane = await User.create({ firstName: "Jane", lastName: "Doe" });
+// console.log("Jane's auto-generated ID:", jane.id);

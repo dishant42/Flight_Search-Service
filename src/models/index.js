@@ -41,3 +41,5 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+
+// index files returns all the models that we create in the models
