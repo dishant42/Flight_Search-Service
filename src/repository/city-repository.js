@@ -16,19 +16,18 @@ class CityRepository {
     };   //name:name is same as name
 
 
-    async destroycity({ cityID }) {
+    async deleteCity(cityId) {
         try {
             await City.destroy({
                 where: {
-                    id: cityID
+                    id: cityId
                 }
             });
-
+            return true;
         } catch (error) {
-            console.log("some error has occured in repository layer");
-            throw (error);
+            console.log("Something went wrong in the repository layer");
+            throw {error};
         }
-
     };
 
     async updatecity(cityID, data) {
@@ -50,7 +49,7 @@ class CityRepository {
 
     async getcity(cityID) {
         try {
-            const city = await City.findByPK(cityID);
+            const city = await City.findByPk(cityID);
             return city;
         } catch (error) {
             console.log("some error has occured in repository layer");
