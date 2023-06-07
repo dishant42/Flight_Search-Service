@@ -91,6 +91,26 @@ const update=async(req,res)=>{
     }
 }
 
+const getallcities=async (req,res)=>{
+    try {
+        const cities=await cityservice.getallcities();
+        return res.status(200).json({
+            data:cities,
+            success:true,
+            message:"Succesfully updated a city",
+            err:{}
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data:{},
+            success:false,
+            message:"not able to get a city",
+            err:error
+        })
+    }
+}
+
 module.exports={
-    create,get,destroy,update
+    create,get,destroy,update,getallcities
 }

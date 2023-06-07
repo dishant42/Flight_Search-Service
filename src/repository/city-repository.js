@@ -32,11 +32,10 @@ class CityRepository {
 
     async updatecity(cityID, data) {
         try {
-            const city = await City.update({      //The City.update method is called, indicating that an 
-                //update operation should be performed on city model
-                where: {                         //If the update operation is successful, the city variable is   assigned the result of the update operation, which could be the number of affected rows or or any other relevant information.
+            const city = await City.update( data,{        
+                where: {                                    
                     id: cityID
-                }
+                },
 
             })
             return city;
@@ -57,6 +56,18 @@ class CityRepository {
         }
     };
 
+    async getallcities(){
+        try {
+            const cities=await City.findAll();
+            return cities;
+        } catch (error) {
+            console.log("some error has occured in repository layer");
+            throw (error);
+        }
+    }
+
 }
 
 module.exports = CityRepository;
+
+//The City.update method is called, indicating that an update operation should be performed on city model .If the update operation is successful, the city variable is   assigned the result of the update operation, which could be the number of affected rows or or any other relevant information
