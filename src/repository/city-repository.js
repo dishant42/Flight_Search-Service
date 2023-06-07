@@ -1,5 +1,7 @@
 // repository is for interatciong with model;
 
+const { Op } = require("sequelize");
+
 const { City } = require("../models/index")
 
 class CityRepository {
@@ -56,13 +58,24 @@ class CityRepository {
         }
     };
 
-    async getallcities(){
+    async getallcities(filter){
         try {
+            if(filter.name){
+                const cities=await City.findAll({
+                    where:{
+                        name:{
+                        [Op.startsWith]: filter.name
+
+                    }
+                }
+            })
+            return cities;
+            }
             const cities=await City.findAll();
             return cities;
         } catch (error) {
             console.log("some error has occured in repository layer");
-            throw (error);
+            throw (error);                                  
         }
     }
 
