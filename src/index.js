@@ -4,6 +4,9 @@ const bodyparser=require("body-parser");
 const apiroutes=require("./routes/index");
 
 const {PORT}=require("./config/ServerConfig");
+const db=require("./models/index");
+
+const {City,Airport}=require("./models/index");
 
 const setupAndStartServer= async()=>{
 
@@ -17,8 +20,31 @@ const setupAndStartServer= async()=>{
     
     app.listen(PORT, async()=>{
         console.log(`server started at ${PORT}`);
+        // const city=await City.findOne({
+            //     where:{
+                //         id:14
+                //     }
+        // }
+        // )
+        // const airport=await city.getAirports();
+        // console.log(city);
+        // console.log(airport);
+
+        // const resultjoinquery=await City.findAll({
+        //     include:{
+        //         model:Airport,
+        //         required:true},
+
+        //     where:{
+        //         id:14
+        //     }
+        // })
+        // console.log(JSON.stringify(resultjoinquery,null,2));
         
-        
+        // if(process.env.SYNC_DB){
+        //     db.sequelize.sync({alter:true});
+              
+        // }
     })
 }
 

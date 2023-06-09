@@ -1,5 +1,7 @@
 'use strict';
 
+const { DATE } = require('sequelize');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -13,11 +15,30 @@ module.exports = {
      * }], {});
     */
 
-    await queryInterface.bulkInsert('airports',[{
+    await queryInterface.bulkInsert('Airports',[{
       name:'kampegowda international airport',
-      
-
-    }])
+      cityID:14,
+      createdAt:new Date(),
+      updatedAt:new Date()
+      },
+    {
+      name:'Mysore international airport',
+      cityID:14,
+      createdAt:new Date(),
+      updatedAt:new Date()
+    },
+    {
+    name:'Indira gandhi international airport',
+      cityID:15,
+      createdAt:new Date(),
+      updatedAt:new Date()
+      },
+      { 
+        name:'Belgavi international airport',
+      cityID:14,
+      createdAt:new Date(),
+      updatedAt:new Date()
+      }], {} )
   },
 
   async down (queryInterface, Sequelize) {
