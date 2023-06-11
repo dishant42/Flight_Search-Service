@@ -7,7 +7,7 @@ class FlightService {
         airplane id,
         departureairportid,
         arrivalairportid,
-        arrivaltime
+        arrivaltimer
         departuretime
         price
         total-seats ->fetch from airplane */
@@ -33,6 +33,26 @@ class FlightService {
         } catch (error) {
             console.log("something error has occurred in service layer");
             throw { error }
+        }
+    }
+
+    async getflight(flightID){
+        try {
+            const response=await this.flightRepository.getFlight(flightID);
+            return response;
+        } catch (error) {
+            console.log("something error has occurred in service layer");
+            throw { error }
+        }
+    }
+
+    async getAllFlightData(data) {
+        try {
+            const flights = await this.flightRepository.getAllFlights(data);
+            return flights;
+        } catch (error) {
+            console.log("Something went wrong at service layer");
+            throw {error};
         }
     }
 }
