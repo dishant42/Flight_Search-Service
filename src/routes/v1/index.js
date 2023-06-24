@@ -7,14 +7,19 @@ const{flightmiddleware}=require("../../middlewares/index");
 
 const router=express.Router();
 
+// routes for city
 router.post("/city",citycontroller.create);
 router.delete("/city/:id",citycontroller.destroy);
 router.patch("/city/:id",citycontroller.update);
 router.get("/city/:id",citycontroller.get);
 router.get("/city",citycontroller.getallcities);
+
+// routes for flights
 router.post("/flight",flightmiddleware.validate_create_flight,flightcontroller.create);
 router.get("/flight/:id",flightcontroller.getFlight);
 router.get('/flights', flightcontroller.getAll);
+
+// routes for airports
 router.post("/airport",airportcontroller.create);
 
 module.exports=router;

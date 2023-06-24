@@ -1,7 +1,7 @@
 const {flightservice}=require("../services/index")
+const {success_codes}=require("../utils/error-code")
 
 const flightService=new flightservice();
-const {success_codes}=require("../utils/error-code")
 
 const create=async(req,res)=>{
     try {
